@@ -18,6 +18,22 @@ const routes: Routes = [
     loadChildren: () => import("./modulos/seguridad/seguridad.module").then(m => m.SeguridadModule)
   },
   {
+    path: "parametros",
+    loadChildren: () => import("./modulos/parametros/parametros.module").then(m => m.ParametrosModule)
+  },
+  {
+    path: "reportes",
+    loadChildren: () => import("./modulos/reportes/reportes.module").then(m => m.ReportesModule)
+  },
+  {
+    path: "usuarios",
+    loadChildren: () => import("./modulos/usuarios/usuarios.module").then(m => m.UsuariosModule)
+  },
+  {
+    path: "viajes",
+    loadChildren: () => import("./modulos/viajes/viajes.module").then(m => m.ViajesModule)
+  },
+  {
     path: "**",
     component: RutaNoEncontradaComponent
   }
