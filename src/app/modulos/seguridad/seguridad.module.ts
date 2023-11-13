@@ -11,6 +11,7 @@ import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.
 import { EliminarUsuarioComponent } from './usuario/eliminar-usuario/eliminar-usuario.component';
 import { RecuperarClaveComponent } from './recuperar-clave/recuperar-clave.component';
 import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
   ],
   imports: [
     CommonModule,
-    SeguridadRoutingModule
+    SeguridadRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SeguridadModule { }

@@ -18,7 +18,8 @@ import { InicioComponent } from './publico/inicio/inicio.component';
     MenuLateralComponent,
     RutaNoEncontradaComponent,
     ErrorDeServidorComponent,
-    InicioComponent
+    InicioComponent,
+    
   ],
   imports: [
     BrowserModule,
