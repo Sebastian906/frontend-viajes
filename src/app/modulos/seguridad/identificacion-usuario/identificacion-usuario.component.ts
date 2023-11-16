@@ -35,7 +35,18 @@ export class IdentificacionUsuarioComponent {
     if (this.fGroup.invalid) {
       alert("Datos incompletos");
     } else {
-      alert("Identificando...");
+      let usuario = this.obtenerFormGroup['usuario'].value;
+      let clave = this.obtenerFormGroup['clave'].value;
+      let claveCifrada = MD5(clave).toString();
+      this.servicioSeguridad.IdentificarUsuario(usuario, claveCifrada).subscribe({
+        next: (datos:userModel) => {
+          console.log(datos);
+          this.router.navigate(["/seguridad/2fa"]);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
     }
   }
 
