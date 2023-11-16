@@ -6,10 +6,12 @@ describe('IdentificacionUsuarioComponent', () => {
   let component: IdentificacionUsuarioComponent;
   let fixture: ComponentFixture<IdentificacionUsuarioComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [IdentificacionUsuarioComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ IdentificacionUsuarioComponent ]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(IdentificacionUsuarioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

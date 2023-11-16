@@ -31,6 +31,13 @@ export class IdentificacionUsuarioComponent {
     });
   }
 
+  IdentificarUsuario() {
+    if (this.fGroup.invalid) {
+      alert("Datos incompletos");
+    } else {
+      alert("Identificando...");
+    }
+  }
 
   get obtenerFormGroup() {
     return this.fGroup.controls;
