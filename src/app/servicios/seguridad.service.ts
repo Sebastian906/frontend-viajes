@@ -3,13 +3,16 @@ import { userModel } from '../modelos/user.model';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfiguracionRutasBackend } from '../config/configuracion.rutas.backend';
+import { ValidatedUserModel } from '../modelos/validated.user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SeguridadService {
   urlBase:string = ConfiguracionRutasBackend.urlSeguridad;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.validacionDeSesion();
+  }
 
   /**
    * Identificar usuario
@@ -18,7 +21,7 @@ export class SeguridadService {
    * @returns datos del usuario validado
    */
   IdentificarUsuario(usuario:string, clave: string): Observable<userModel> {
-    return this.http.post<userModel>(`${this.urlBase}identify-user`, {
+    return this.http.post<userModel>(`${this.urlBase}identificar-usario`, {
       email: usuario,
       password: clave
     });
@@ -59,11 +62,44 @@ export class SeguridadService {
    * @param codigo
    * @returns
    */
-  ValidarCodigo2fa(idUsuario:string, codigo: string): Observable<object> {
-    return this.http.post<object>(`${this.urlBase}verify-2fa`, {
+  ValidarCodigo2fa(idUsuario:string, codigo: string): Observable<ValidatedUserModel> {
+    return this.http.post<ValidatedUserModel>(`${this.urlBase}verificar-2fa`, {
       userId: idUsuario,
       code2fa: codigo
     });
+  }
+
+  AlmacenarDatosUsuarioValidado(datos:ValidatedUserModel): boolean {
+    let datosLS = localStorage.getItem("datos-sesion");
+    if(datosLS != null) {
+      return false;
+    } else {
+      let datosString = JSON.stringify(datos);
+      localStorage.setItem("datos-sesion", datosString);
+      return true;
+    }
+  }
+
+  /**
+   * Administración de la sesión de usuario
+   */
+
+  datosUsuarioValidado = new BehaviorSubject<ValidatedUserModel>(new ValidatedUserModel());
+
+  ObtenerDatosSesion():Observable<ValidatedUserModel>{
+    return this.datosUsuarioValidado.asObservable();
+  }
+
+  validacionDeSesion() {
+    let ls = localStorage.getItem("datos-sesion");
+    if(ls) {
+      let objUsuario = JSON.parse(ls);
+      this.ActualizarComportamientoUsuario(objUsuario);
+    }
+  }
+
+  ActualizarComportamientoUsuario(datos: ValidatedUserModel) {
+    return this.datosUsuarioValidado.next(datos)
   }
 
 }
