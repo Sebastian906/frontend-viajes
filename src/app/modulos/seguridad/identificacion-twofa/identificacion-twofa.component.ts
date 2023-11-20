@@ -11,7 +11,7 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 })
 export class IdentificacionTwofaComponent {
 
-  userId: string="";
+  userId: string = "";
   fGroup:FormGroup = new FormGroup({});
 
   constructor(

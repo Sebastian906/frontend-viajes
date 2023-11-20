@@ -21,7 +21,7 @@ export class SeguridadService {
    * @returns datos del usuario validado
    */
   IdentificarUsuario(usuario:string, clave: string): Observable<userModel> {
-    return this.http.post<userModel>(`${this.urlBase}identificar-usario`, {
+    return this.http.post<userModel>(`${this.urlBase}identify-user`, {
       email: usuario,
       password: clave
     });
@@ -63,7 +63,7 @@ export class SeguridadService {
    * @returns
    */
   ValidarCodigo2fa(idUsuario:string, codigo: string): Observable<ValidatedUserModel> {
-    return this.http.post<ValidatedUserModel>(`${this.urlBase}verificar-2fa`, {
+    return this.http.post<ValidatedUserModel>(`${this.urlBase}Verify-2fa`, {
       userId: idUsuario,
       code2fa: codigo
     });
