@@ -40,9 +40,13 @@ export class IdentificacionUsuarioComponent {
       let claveCifrada = MD5(clave).toString();
       this.servicioSeguridad.IdentificarUsuario(usuario, claveCifrada).subscribe({
         next: (datos:userModel) => {
-          console.log(datos);
-          if(this.servicioSeguridad.AlmacenarDatosUsuarioIdentificado(datos)) {
-            this.router.navigate(["/seguridad/2fa"]);
+          if (datos._id == undefined || datos._id == null) {
+            alert("Datos incorrectos o falta validarse desde correo electronico.");  
+          }else{
+            console.log(datos);
+            if(this.servicioSeguridad.AlmacenarDatosUsuarioIdentificado(datos)) {
+              this.router.navigate(["/seguridad/2fa"]);
+            }
           }
         },
         error: (err) => {
