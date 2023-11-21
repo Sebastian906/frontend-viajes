@@ -73,6 +73,12 @@ export class SeguridadService {
     return this.http.post<userModel>(`${this.urlBase}usuario-publico`, datos);
   }
 
+  ValidarHashUsuarioPublico(hash: string): Observable<boolean> {
+    return this.http.post<boolean>(`${this.urlBase}validar-hash-usuario`, {
+      codigohash: hash
+    });
+  }
+
   AlmacenarDatosUsuarioValidado(datos:ValidatedUserModel): boolean {
     let datosLS = localStorage.getItem("datos-sesion");
     if(datosLS != null) {
