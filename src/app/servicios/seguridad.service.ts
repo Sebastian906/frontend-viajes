@@ -69,6 +69,10 @@ export class SeguridadService {
     });
   }
 
+  RegistrarUsuarioPublico(datos: any): Observable<userModel> {
+    return this.http.post<userModel>(`${this.urlBase}usuario-publico`, datos);
+  }
+
   AlmacenarDatosUsuarioValidado(datos:ValidatedUserModel): boolean {
     let datosLS = localStorage.getItem("datos-sesion");
     if(datosLS != null) {
