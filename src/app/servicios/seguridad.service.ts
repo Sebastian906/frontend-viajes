@@ -64,7 +64,7 @@ export class SeguridadService {
    */
   ValidarCodigo2fa(idUsuario:string, codigo: string): Observable<ValidatedUserModel> {
     return this.http.post<ValidatedUserModel>(`${this.urlBase}Verify-2fa`, {
-      userId: idUsuario,
+      UserId: idUsuario,
       code2fa: codigo
     });
   }
@@ -76,8 +76,36 @@ export class SeguridadService {
     } else {
       let datosString = JSON.stringify(datos);
       localStorage.setItem("datos-sesion", datosString);
+      this.ActualizarComportamientoUsuario(datos);
       return true;
     }
+  }
+
+  /**
+   * Cerrando sesión
+   */
+  RemoverDatosUsuarioValidado() {
+    let datosUsuario = localStorage.getItem("datos-usuario")
+    let datosSesion = localStorage.getItem("datos-sesion")
+    if(datosUsuario) {
+      localStorage.removeItem("datos-usuario");
+    }
+    if(datosSesion) {
+      localStorage.removeItem("datos-sesion");
+    }
+    this.ActualizarComportamientoUsuario(new ValidatedUserModel());
+  }
+
+  CambiarClavePorUsuario(usuario: string): Observable<userModel> {
+    return this.http.post<userModel>(`${this.urlBase}cambiar-clave`, {
+      password: usuario,
+    });
+  }
+
+  RecuperarClavePorUsuario(usuario: string): Observable<userModel> {
+    return this.http.post<userModel>(`${this.urlBase}recuperar-clave`, {
+      email: usuario,
+    });
   }
 
   /**
