@@ -10,7 +10,7 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 export class ValidarHashUsuarioPublicoComponent {
 
   validado = false;
-  hash: string = "";
+  hash : string = "";
 
   constructor(
     private servicioSeguridad: SeguridadService,
@@ -19,7 +19,7 @@ export class ValidarHashUsuarioPublicoComponent {
 
    }
 
-   nhOnInit() {
+   ngOnInit() {
     this.hash = this.route.snapshot.params["hash"];
     this.ValidarHash();
    }
