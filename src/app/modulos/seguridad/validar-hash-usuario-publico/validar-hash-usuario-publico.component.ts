@@ -5,36 +5,33 @@ import { SeguridadService } from 'src/app/servicios/seguridad.service';
 @Component({
   selector: 'app-validar-hash-usuario-publico',
   templateUrl: './validar-hash-usuario-publico.component.html',
-  styleUrls: ['./validar-hash-usuario-publico.component.css']
+  styleUrls: ['./validar-hash-usuario-publico.component.css'],
 })
 export class ValidarHashUsuarioPublicoComponent {
-
   validado = false;
-  hash: string = "";
+  hash: string = '';
 
   constructor(
     private servicioSeguridad: SeguridadService,
-    private route : ActivatedRoute
-  ) {
+    private route: ActivatedRoute
+  ) {}
 
-   }
-
-   nhOnInit() {
-    this.hash = this.route.snapshot.params["hash"];
+  ngOnInit() {
+    this.hash = this.route.snapshot.params['hash'];
     this.ValidarHash();
-   }
+  }
 
-   /**
-    * Función para validar el hash
-    */
-   ValidarHash() {
-     this.servicioSeguridad.ValidarHashUsuarioPublico(this.hash).subscribe({
-      next: (respuesta:boolean) => {
+  /**
+   * Función para validar el hash
+   */
+  ValidarHash() {
+    this.servicioSeguridad.ValidarHashUsuarioPublico(this.hash).subscribe({
+      next: (respuesta: boolean) => {
         this.validado = respuesta;
       },
       error: (err) => {
-        alert("Ha ocurrido un error validando el hash.")
-      }
-     });
-   }
+        alert('Ha ocurrido un error validando el hash.');
+      },
+    });
+  }
 }
