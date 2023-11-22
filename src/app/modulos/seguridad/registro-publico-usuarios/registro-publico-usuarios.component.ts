@@ -32,6 +32,9 @@ ConstruirFormulario() {
     segundoApellido: ['', [Validators.minLength(2)]],
     correo: ['', [Validators.required]],
     telefono: ['', [Validators.required, Validators.minLength(12)]],
+    birthdate: ['', [Validators.required]],
+    dni:['', [Validators.required, Validators.minLength(10)]],
+    ciudad : ['',[Validators.required], Validators.minLength(2)]
   });
 }
 
@@ -42,11 +45,14 @@ Registrarse() {
   let campos = this.ObtenerFormGroup;
   let datos = {
     name: campos["primerNombre"].value,
-    secondName: campos["segundoNombre"].value,
     lastName: campos["primerApellido"].value,
-    secondLastname: campos["segundoApellido"].value,
+    phone: campos["telefono"].value,
+    city : campos["ciudad"].value,
+    birthDate : campos["birthdate"].value,
+    dni : campos["dni"].value,
     email: campos["correo"].value,
-    phone: campos["telefono"].value
+    secondName: campos["segundoNombre"].value,
+    secondLastname: campos["segundoApellido"].value,
   }
   this.servicioSeguridad.RegistrarUsuarioPublico(datos).subscribe({
     next: (respuesta:userModel) => {

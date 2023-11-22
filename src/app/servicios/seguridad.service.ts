@@ -117,7 +117,7 @@ export class SeguridadService {
       email: usuario,
     });
   }
-
+ 
   /**
    * Administración de la sesión de usuario
    */

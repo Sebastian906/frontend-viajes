@@ -31,7 +31,7 @@ export class RecuperarClaveComponent {
       let usuario = this.obtenerFormGroup["usuario"].value;
       this.servicioSeguridad.RecuperarClavePorUsuario(usuario).subscribe({
         next: (datos:userModel) => {
-          alert("Se ha enviado una nueva contraseña como mensaje de texto al número " + datos.phone)
+          alert("Se ha enviado una nueva contraseña como correo electronico al correo: " + datos.email)
         },
         error: (err) => {
           alert("Ha ocurrido un error enviando la nueva contraseña.")
