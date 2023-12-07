@@ -1,0 +1,31 @@
+<br />
+  <a routerLink="/parametros/agregar-conductor" class="btn">Agregar Registro</a>
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Telefono</th>
+      <th>Correo</th>
+      <th>Foto</th>
+      <th>Disponibilidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let r of listaRegistros">
+      <td>{{r.name}}</td>
+      <td>{{r.lastname}}</td>
+      <td>{{r.phone}}</td>
+      <td>{{r.email}}</td>
+      <td><img src="{{r.driverPhoto}}" class="imagenListadoRegistros"/></td>
+      <td>{{r.available}}</td>
+      <td>
+        <a routerLink="/parametros/editar-conductor/{{r._id}}" class="btn orange">Editar Registro</a>&nbsp;
+        <a routerLink="/parametros/eliminar-conductor/{{r._id}}" class="btn red">Eliminar Registro</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
