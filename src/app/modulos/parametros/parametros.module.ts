@@ -10,6 +10,10 @@ import { ListarClienteComponent } from './clientes/listar-cliente/listar-cliente
 import { CrearClienteComponent } from './clientes/crear-cliente/crear-cliente.component';
 import { EliminarClienteComponent } from './clientes/eliminar-cliente/eliminar-cliente.component';
 import { EditarClienteComponent } from './clientes/editar-cliente/editar-cliente.component';
+import { EditarRutaComponent } from './rutas/editar-ruta/editar-ruta.component';
+import { ListarRutaComponent } from './rutas/listar-ruta/listar-ruta.component';
+import { EliminarRutaComponent } from './rutas/eliminar-ruta/eliminar-ruta.component';
+import { CrearRutaComponent } from './rutas/crear-ruta/crear-ruta.component';
 
 
 @NgModule({
@@ -21,7 +25,11 @@ import { EditarClienteComponent } from './clientes/editar-cliente/editar-cliente
     ListarClienteComponent,
     CrearClienteComponent,
     EliminarClienteComponent,
-    EditarClienteComponent
+    EditarClienteComponent,
+    EditarRutaComponent,
+    ListarRutaComponent,
+    EliminarRutaComponent,
+    CrearRutaComponent
   ],
   imports: [
     CommonModule,

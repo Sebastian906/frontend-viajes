@@ -4,6 +4,10 @@ import { ListarConductorComponent } from './conductores/listar-conductor/listar-
 import { CrearConductorComponent } from './conductores/crear-conductor/crear-conductor.component';
 import { EliminarConductorComponent } from './conductores/eliminar-conductor/eliminar-conductor.component';
 import { EditarConductorComponent } from './conductores/editar-conductor/editar-conductor.component';
+import { ListarRutaComponent } from './rutas/listar-ruta/listar-ruta.component';
+import { CrearRutaComponent } from './rutas/crear-ruta/crear-ruta.component';
+import { EditarRutaComponent } from './rutas/editar-ruta/editar-ruta.component';
+import { EliminarRutaComponent } from './rutas/eliminar-ruta/eliminar-ruta.component';
 
 const routes: Routes = [
   {
@@ -21,6 +25,22 @@ const routes: Routes = [
   {
     path: "editar-conductor/:id",
     component: EditarConductorComponent
+  },
+  {
+    path: "listar-ruta",
+    component: ListarRutaComponent
+  },
+  {
+    path: "crear-ruta",
+    component: CrearRutaComponent
+  },
+  {
+    path: "editar-ruta/:id",
+    component: EditarRutaComponent
+  },
+  {
+    path: "eliminar-ruta/:id",
+    component: EliminarRutaComponent
   }
 ];
 
